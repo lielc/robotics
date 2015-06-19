@@ -12,6 +12,11 @@ Map::Map() {
 
 }
 
+void loadMapToGrid(string mapPath)
+{
+
+}
+
 Map::~Map() {
 	// TODO Auto-generated destructor stub
 }
