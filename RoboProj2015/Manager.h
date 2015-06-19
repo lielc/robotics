@@ -7,10 +7,17 @@
 
 #ifndef MANAGER_H_
 #define MANAGER_H_
+//#include "Plans/PlnObstacleAvoid.h"
+#include "Robot.h"
+#include "./PathPlanning/Plan.h"
+#include "./behaviors/Behavior.h"
 
 class Manager {
+	Behavior* _curr;
+	Robot* _robot;
 public:
-	Manager();
+	Manager(Robot* robot, Plan* pln);
+	void run();
 	virtual ~Manager();
 };
 

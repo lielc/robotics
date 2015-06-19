@@ -18,30 +18,11 @@ class Robot {
 
 public:
 	Robot(char* ip, int port);
-
-	void Read() {
-			_pc->Read();
-		}
-
-	void setSpeed(float xSpeed, float angularSpeed) {
-		_pp->SetSpeed(xSpeed, angularSpeed);
-	}
-
-	// two functions below this should be checked - liel
-	bool isRightFree() {
-		if ((*_lp)[50] > 0.5)
-			return true;
-		else
-			return false;
-	}
-
-	bool isForwardFree() {
-		if ((*_lp)[332] > 0.5)
-			return true;
-		else
-			return false;
-	}
-
+	void Read();
+	void setSpeed(float xSpeed, float angularSpeed);
+	bool isRightFree();
+	bool isForwardFree();
+	bool isLeftFree();
 	virtual ~Robot();
 };
 
