@@ -35,6 +35,16 @@ bool Robot::isRightFree() {
 		return false;
 }
 
+
+//copied from right func. need to update this - Liel
+bool Robot::isLeftFree() {
+	if ((*_lp)[50] > 0.5)
+		return true;
+	else
+		return false;
+}
+
+
 bool Robot::isForwardFree() {
 	if ((*_lp)[332] > 0.5)
 		return true;
