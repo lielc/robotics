@@ -19,6 +19,29 @@ Robot::Robot(char* ip, int port) {
 		Read();
 }
 
+void Robot::Read() {
+	_pc->Read();
+}
+
+void Robot::setSpeed(float xSpeed, float angularSpeed) {
+		_pp->SetSpeed(xSpeed, angularSpeed);
+}
+
+// two functions below this should be checked - liel
+bool Robot::isRightFree() {
+	if ((*_lp)[50] > 0.5)
+		return true;
+	else
+		return false;
+}
+
+bool Robot::isForwardFree() {
+	if ((*_lp)[332] > 0.5)
+		return true;
+	else
+		return false;
+}
+
 Robot::~Robot() {
 	delete _pc;
 	delete _pp;
