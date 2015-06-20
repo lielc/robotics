@@ -7,12 +7,20 @@
 
 #include "Behavior.h"
 
-Behavior::Behavior() {
-	// TODO Auto-generated constructor stub
+Behavior::Behavior(Robot* robot) : _robot(robot) {}
 
+void Behavior::addBeh(Behavior* behavior) {
+	_behVec.push_back(behavior);
 }
 
-Behavior::~Behavior() {
-	// TODO Auto-generated destructor stub
+Behavior* Behavior::getNextBeh() {
+
+	for (unsigned int i=0 ; i < _behVec.size() ; i++)
+	{
+		if (_behVec[i]->startCond())
+			return _behVec[i];
+	}
+	return NULL;
 }
 
+Behavior::~Behavior() {}

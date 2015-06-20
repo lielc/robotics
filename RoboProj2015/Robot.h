@@ -15,6 +15,7 @@ class Robot {
 	PlayerClient*_pc;
 	Position2dProxy* _pp;
 	LaserProxy* _lp;
+	const double FREE_DIST = 0.8;
 
 public:
 	Robot(char* ip, int port);

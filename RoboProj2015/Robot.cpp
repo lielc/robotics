@@ -14,7 +14,7 @@ Robot::Robot(char* ip, int port) {
 	_lp = new LaserProxy(_pc);
 
 	_pp->SetMotorEnable(true);
-	//For fixing Player's reading BUG
+
 	for(int i=0;i<15;i++)
 		Read();
 }
@@ -27,16 +27,23 @@ void Robot::setSpeed(float xSpeed, float angularSpeed) {
 		_pp->SetSpeed(xSpeed, angularSpeed);
 }
 
-// two functions below this should be checked - liel
 bool Robot::isRightFree() {
-	if ((*_lp)[50] > 0.5)
+	if (_lp->GetMinRight() > FREE_DIST)
 		return true;
 	else
 		return false;
 }
 
+bool Robot::isLeftFree() {
+	if (_lp->GetMinLeft() > FREE_DIST)
+		return true;
+	else
+		return false;
+}
+
+
 bool Robot::isForwardFree() {
-	if ((*_lp)[332] > 0.5)
+	if ((*_lp)[375] > FREE_DIST)
 		return true;
 	else
 		return false;
