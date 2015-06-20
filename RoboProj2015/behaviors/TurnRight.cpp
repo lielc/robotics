@@ -7,35 +7,28 @@
 
 #include "TurnRight.h"
 
-TurnRight::TurnRight() {
-	// TODO Auto-generated constructor stub
+TurnRight::TurnRight(Robot* robot) : Behavior(robot){}
 
-}
-
-/*bool startCond()
+bool TurnRight::startCondition()
 {
 	if(_robot->isRightFree() )
 		return true;
 	else
 		return false;
 }
-bool stopCond()
+
+bool TurnRight::stopCondition()
 {
 	if(_robot->isForwardFree())
-				return true;
-			else
-				return false;
+		return true;
+	else
+		return false;
 }
 
-void action()
+void TurnRight::action()
 {
-	_robot->setSpeed(0.0, 0.3);
+	_robot->setSpeed(0.0, TURN_ANGLE);
 }
-virtual ~TurnRight();
-};
-*/
 
-TurnRight::~TurnRight() {
-	// TODO Auto-generated destructor stub
-}
+TurnRight::~TurnRight() {}
 

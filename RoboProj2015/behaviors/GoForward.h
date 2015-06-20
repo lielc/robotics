@@ -8,10 +8,15 @@
 #ifndef GOFORWARD_H_
 #define GOFORWARD_H_
 
-class GoForward {
+#include "./Behavior.h"
+
+class GoForward: public Behavior{
 public:
-	GoForward();
+	GoForward(Robot* robot);
 	virtual ~GoForward();
+	bool startCondition();
+	bool stopCondition();
+	void action();
 };
 
 #endif /* GOFORWARD_H_ */

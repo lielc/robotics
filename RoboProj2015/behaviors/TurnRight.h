@@ -8,10 +8,16 @@
 #ifndef TURNRIGHT_H_
 #define TURNRIGHT_H_
 
-class TurnRight {
+#include "./Behavior.h"
+
+class TurnRight: public Behavior {
 public:
-	TurnRight();
+
+	TurnRight(Robot* robot);
 	virtual ~TurnRight();
+	bool startCondition();
+	bool stopCondition();
+	void action();
 };
 
 #endif /* TURNRIGHT_H_ */
