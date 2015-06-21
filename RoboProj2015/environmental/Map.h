@@ -4,13 +4,13 @@
  *  Created on: Jun 17, 2015
  *      Author: colman
  */
-
+//#include "../Utils/lodepng.h"
 #ifndef MAP_H_
 #define MAP_H_
 #include <string>
-#include "../Utils/lodepng.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <vector>
 using namespace std;
 
 const int FREE = 0;

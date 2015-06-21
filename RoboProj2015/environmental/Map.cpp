@@ -20,7 +20,7 @@ void blowUpMap()
 void Map::loadMap(string mapPath)
 {
 	//decode
-	  unsigned error = lodepng::decode(_image, _width, _height, mapPath);
+	 // unsigned error = lodepng::decode(_image, _width, _height, mapPath);
 
 	  //if there's an error, display it
 	  /*if(error)
