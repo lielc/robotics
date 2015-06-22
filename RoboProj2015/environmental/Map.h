@@ -4,7 +4,7 @@
  *  Created on: Jun 17, 2015
  *      Author: colman
  */
-//#include "../Utils/lodepng.h"
+#include "../Utils/lodepng.h"
 #ifndef MAP_H_
 #define MAP_H_
 #include <string>
