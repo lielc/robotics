@@ -7,12 +7,28 @@
 
 #include "GoForward.h"
 
-GoForward::GoForward() {
-	// TODO Auto-generated constructor stub
+GoForward::GoForward(Robot* robot) : Behavior(robot) {}
 
+GoForward::~GoForward() {}
+
+bool GoForward::startCondition()
+{
+	if(_robot->isForwardFree() )
+		return true;
+	else
+		return false;
 }
 
-GoForward::~GoForward() {
-	// TODO Auto-generated destructor stub
+bool GoForward::stopCondition()
+{
+	if(!(_robot->isForwardFree()))
+		return true;
+	else
+		return false;
+}
+
+void GoForward::action()
+{
+	_robot->setSpeed(FORWARD_SPEED, 0.0);
 }
 
