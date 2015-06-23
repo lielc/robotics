@@ -9,13 +9,16 @@
 
 Manager::Manager(Robot* robot, Plan* pln) {
 	_robot = robot;
-//	_curr = pln->getStartPoint();
+	//_behaviors[0] = new GoForward();
 }
+
 void Manager::run()
 {
 	_robot->Read();
-	if(!(_curr->startCond()))
+
+	/*if(!(_curr->startCond()))
 		return;
+
 	_curr->action();
 	while(_curr !=NULL)
 	{
@@ -26,7 +29,7 @@ void Manager::run()
 		}
 		_curr = _curr->getNextBeh();
 		_robot->Read();
-	}
+	}*/
 }
 
 Manager::~Manager() {
