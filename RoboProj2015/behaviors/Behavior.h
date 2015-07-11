@@ -16,17 +16,17 @@ class Behavior {
 
 protected:
 	Robot* _robot;
-	const double TURN_ANGLE = 0.5;
-	const double FORWARD_SPEED = 0.8;
+	static const double TURN_ANGLE = 0.8;
+	static const double FORWARD_SPEED = 0.8;
 
 public:
 	Behavior(Robot* robot);
 	virtual ~Behavior();
-	virtual bool startCond() = 0;
-	virtual bool stopCond() = 0;
+	virtual bool startCondition() = 0;
+	virtual bool stopCondition() = 0;
 	virtual void action() = 0;
-	void addBeh(Behavior* behvior);
-	Behavior* getNextBeh();
+	//void addBeh(Behavior* behavior, std::vector<Behavior*> behVec);
+	//Behavior* getNextBeh(std::vector<Behavior*> behVec);
 };
 
 #endif /* BEHAVIOR_H_ */

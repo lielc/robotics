@@ -6,29 +6,49 @@
  */
 
 #include "Manager.h"
+#include <vector>
 
-Manager::Manager(Robot* robot, Plan* pln) {
+
+Manager::Manager(Robot* robot) {
 	_robot = robot;
-//	_curr = pln->getStartPoint();
+	behaviors.push_back(new GoForward(_robot));
+	behaviors.push_back(new TurnRight(_robot));
+	behaviors.push_back(new TurnLeft(_robot));
+	behaviors.push_back(new TurnUntilFree(_robot));
 }
+
 void Manager::run()
 {
-	_robot->Read();
-	if(!(_curr->startCond()))
-		return;
-	_curr->action();
-	while(_curr !=NULL)
+
+	Behavior* currBeh;
+
+	currBeh = getNextBeh(behaviors);
+
+	while(currBeh !=NULL)
 	{
-		while(_curr->stopCond() == false)
+		_robot->Read();
+
+		while(currBeh->stopCondition() == false)
 		{
-			_curr->action();
+			currBeh->action();
 			_robot->Read();
 		}
-		_curr = _curr->getNextBeh();
-		_robot->Read();
+		currBeh = getNextBeh(behaviors);
 	}
 }
 
+Behavior* Manager::getNextBeh(std::vector<Behavior*> behVec) {
+
+	for (unsigned int i=0 ; i < behVec.size() ; i++)
+	{
+		if (behVec[i]->startCondition())
+			return behVec[i];
+	}
+	return NULL;
+}
+
 Manager::~Manager() {
-	// TODO Auto-generated destructor stub
+	for (int index = 0; index < behaviors.size(); index++) {
+		delete behaviors[index];
+	}
 }

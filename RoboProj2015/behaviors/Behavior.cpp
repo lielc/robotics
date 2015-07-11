@@ -9,18 +9,18 @@
 
 Behavior::Behavior(Robot* robot) : _robot(robot) {}
 
-void Behavior::addBeh(Behavior* behavior) {
+/*void Behavior::addBeh(Behavior* behavior,  std::vector<Behavior*> behVec) {
 	_behVec.push_back(behavior);
 }
 
-Behavior* Behavior::getNextBeh() {
+Behavior* Behavior::getNextBeh(std::vector<Behavior*> behVec) {
 
-	for (unsigned int i=0 ; i < _behVec.size() ; i++)
+	for (unsigned int i=0 ; i < behVec.size() ; i++)
 	{
-		if (_behVec[i]->startCond())
-			return _behVec[i];
+		if (behVec[i]->startCondition())
+			return behVec[i];
 	}
 	return NULL;
-}
+}*/
 
 Behavior::~Behavior() {}
