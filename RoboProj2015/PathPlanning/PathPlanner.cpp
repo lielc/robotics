@@ -17,8 +17,8 @@
 
 using namespace std;
 
-const int n=5; //need to take map size
-const int m=5; //need to take map size
+const int n=10; //need to take map size
+const int m=10; //need to take map size
 static int map[n][m]; //need to take map/grid
 static int closed_nodes_map[n][m];
 static int open_nodes_map[n][m];
@@ -29,17 +29,14 @@ static int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
 
 PathPlanner::PathPlanner() {
 
-}
+ }
 
 PathPlanner::~PathPlanner() {
 }
 
-bool operator<(const node & a, const node & b)
-{
-	return (a.getPriority() > b.getPriority());
-}
 
-string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd)
+
+string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd, vector < pair<int,int> >* Points)
 {
 	static priority_queue<node*> pq[2];
 	static int pqi;
@@ -77,14 +74,23 @@ string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd,
 			string path="";
 			while(!(x==xStart && y==yStart))
 			{
+				pair<int,int> pnt;
+				pnt.first = x;
+				pnt.second = y;
+				Points->push_back(pnt);
 				j=dir_map[x][y];
 				c='0'+(j+dir/2)%dir;
 				path=c+path;
 				x+=dx[j];
 				y+=dy[j];
 			}
+			pair<int,int> pnt;
+			pnt.first = x;
+			pnt.second = y;
+			Points->push_back(pnt);
 
 			delete n0;
+
 
 			while(!pq[pqi].empty())
 			{

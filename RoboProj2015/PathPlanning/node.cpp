@@ -55,8 +55,6 @@ const int & node::estimate(const int & xDest, const int & yDest) const
 	xd=xDest-xPos;
 	yd=yDest-yPos;
 
-	d=static_cast<int>(sqrt(xd*xd+yd*yd));
-
 	d=abs(xd)+abs(yd);
 
 	return(d);
@@ -68,4 +66,11 @@ void node::updatePriority(const int & xDest, const int & yDest)
 void node::nextLevel(const int & i)
 {
 	level+=(dir==8?(i%2==0?10:14):10);
+	//level+=10;
 }
+bool operator<(const node & a, const node & b)
+{
+	return (a.getPriority() > b.getPriority());
+}
+
+
