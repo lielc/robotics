@@ -6,6 +6,7 @@
  */
 
 #include "PathPlanner.h"
+#include "../environmental/Map.h"
 #include "node.h"
 #include <iostream>
 #include <iomanip>
@@ -17,8 +18,8 @@
 
 using namespace std;
 
-const int n=10; //need to take map size
-const int m=10; //need to take map size
+const int n=6; //need to take from map class
+const int m=6; //need to take from map class
 static int map[n][m]; //need to take map/grid
 static int closed_nodes_map[n][m];
 static int open_nodes_map[n][m];
@@ -38,6 +39,7 @@ PathPlanner::~PathPlanner() {
 
 string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd, vector < pair<int,int> >* Points)
 {
+
 	static priority_queue<node*> pq[2];
 	static int pqi;
 	static node* n0;
@@ -50,7 +52,7 @@ string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd,
 	{
 		for(x=0;x<n;x++)
 		{
-			closed_nodes_map[x][y]=0;
+			//closed_nodes_map[x][y]=0; - need to take from map class
 			open_nodes_map[x][y]=0;
 		}
 	}
