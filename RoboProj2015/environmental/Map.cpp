@@ -9,12 +9,17 @@
 
 vector<unsigned char> _map; //the raw pixels
 unsigned _width, _height;
-int _mapResolution, _gridResolution;
+double _mapResolution;
+int _gridResolution, _robotWidth, _robotDepth;
 
-Map::Map(int mapResolution, int gridResolution)
+Map::Map()
 {
-	//_mapResolution = mapResolution;
-	//_gridResolution = gridResolution;
+	ConfigManager confManager;
+	confManager.initializeConfParameters();
+	_mapResolution = confManager.getMapResolution();
+	_gridResolution = confManager.getGridResolution();
+	_robotWidth = confManager.getRobotWidth();
+	_robotDepth = confManager.getRobotDepth();
 }
 
 Map::~Map(void)
@@ -88,11 +93,8 @@ int** Map::convertImageToGrid(vector <unsigned char> mapToConvert)
 
 int** Map::convertImageToGridWithNewResolution(vector <unsigned char> mapToConvert)
 {
-	int resolutionRatio = 2;
-	int resolutionCap = 8;
-
-	//int resolutionRatio = ((int)(_gridResolution / _mapResolution) / 2);
-	//int resolutionCap = ((int)(resolutionRatio * resolutionRatio)) / 2);
+	int resolutionRatio = ((int)(_gridResolution / _mapResolution) / 2);
+	int resolutionCap = ((int)(resolutionRatio * resolutionRatio) / 2);
 
 	int newHeight = (int)(_height / resolutionRatio);
 	int newWidth = (int)(_width / resolutionRatio);
@@ -157,11 +159,11 @@ int** Map::convertImageToGridWithNewResolution(vector <unsigned char> mapToConve
 vector <unsigned char> Map::inflateMap()
 {
 	// inflate the obstacles according to the map resolution
-	int hightToInflate = (int)((30 / 2.5));
-	int widthToInflate = (int)((30 / 2.5));
+	//int hightToInflate = (int)((30 / 2.5));
+	//int widthToInflate = (int)((30 / 2.5));
 
-	//int hightToInflate = (int)(ConfigManager::getRobotSizeX() / _mapResolution);
-	//int widthToInflate = (int)(ConfigManager::getRobotSizeY() / _mapResolution);
+	int hightToInflate = (int)(_robotDepth / _mapResolution);
+	int widthToInflate = (int)(_robotWidth / _mapResolution);
 
 	// Creating a copy of the current image
 	// inflated map will contain the inflated obstacles

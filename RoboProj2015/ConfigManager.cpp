@@ -8,7 +8,7 @@
 #include "ConfigManager.h"
 
 ConfigManager::ConfigManager() {
-	initializeConfParameters();
+	//initializeConfParameters();
 }
 
 int ConfigManager::getGoalLocationX()

@@ -13,7 +13,7 @@ public:
 	const int FREE = 0;
 	const int OCCUPIED = 1;
 
-	Map(int mapResolution, int gridResolution);
+	Map();
 	virtual ~Map(void);
 	//void getImageInPixels(string mapPath);
 	//int** getMapInNewResolution(int** map, int mapWidth, int mapHeight, int newPixelSize);
