@@ -42,11 +42,20 @@ class ConfigManager {
 	startLocation _startLocation;
 	goal _goal;
 	robotSize _robotSize;
-	int _mapResolutionCM;
+	double _mapResolutionCM;
 	int _gridResolutionCM;
 public:
 	ConfigManager();
 	void initializeConfParameters();
+	string getMapPath();
+	int getStartLocationX();
+	int getStartLocationY();
+	int getGoalLocationX();
+	int getGoalLocationY();
+	int getRobotWidth();
+	int getRobotDepth();
+	double getMapResolution();
+	int getGridResolution();
 	virtual ~ConfigManager();
 };
 

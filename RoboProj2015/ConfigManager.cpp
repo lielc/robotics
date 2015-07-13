@@ -8,7 +8,52 @@
 #include "ConfigManager.h"
 
 ConfigManager::ConfigManager() {
-	initializeConfParameters();
+	//initializeConfParameters();
+}
+
+int ConfigManager::getGoalLocationX()
+{
+	return _goal.X;
+}
+
+int ConfigManager::getGoalLocationY()
+{
+	return _goal.Y;
+}
+
+int ConfigManager::getStartLocationX()
+{
+	return _startLocation.X;
+}
+
+int ConfigManager::getStartLocationY()
+{
+	return _startLocation.Y;
+}
+
+int ConfigManager::getRobotDepth()
+{
+	return _robotSize.depth;
+}
+
+int ConfigManager::getRobotWidth()
+{
+	return _robotSize.width;
+}
+
+int ConfigManager::getGridResolution()
+{
+	return _gridResolutionCM;
+}
+
+double ConfigManager::getMapResolution()
+{
+	return _mapResolutionCM;
+}
+
+string ConfigManager::getMapPath()
+{
+	return _mapPath;
 }
 
 string getSectionNameFromCurrLine(string currLine)
@@ -93,7 +138,7 @@ void ConfigManager::initializeConfParameters()
 		}
 		else if (sectionName == MAP_RESOLUTION_SETION)
 		{
-			this->_mapResolutionCM = atoi(currLine.substr(sectionName.length() + 1).c_str());
+			this->_mapResolutionCM = atof(currLine.substr(sectionName.length() + 1).c_str());
 		}
 		else
 		{

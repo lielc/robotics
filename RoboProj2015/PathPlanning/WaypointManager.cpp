@@ -5,17 +5,17 @@
  *      Author: colman
  */
 
-#include "WaypointManager.h"
 #include "PathPlanner.h"
-#include <iostream>
-#include <iomanip>
-#include <queue>
-#include <string>
-#include <math.h>
-#include <ctime>
-#include <stdlib.h>
+#include "WaypointManager.h"
+#include "../ConfigManager.h"
+#include <vector>
 
 using namespace std;
+
+int const xStart=(new ConfigManager())->getStartLocationX();
+int const yStart=(new ConfigManager())->getStartLocationY();
+int const xEnd=(new ConfigManager())->getGoalLocationX();
+int const yEnd=(new ConfigManager())->getGoalLocationY();
 
 WaypointManager::WaypointManager() {
 
@@ -24,23 +24,32 @@ WaypointManager::WaypointManager() {
 WaypointManager::~WaypointManager() {
 }
 
-string getPath(int xStart, int yStart, int xEnd, int yEnd)
+string Path(vector < pair<int,int> > FinalPoints)
 {
-	return ((new PathPlanner)->pathFind(xStart, yStart, xEnd, yEnd));
-}
-void selectedWayPoints()
-{
-	int xStart=0; //need to get from ConfigManager
-	int yStart=0; //need to get from ConfigManager
-	int xEnd=100; //need to get from ConfigManager
-	int yEnd=100; //need to get from ConfigManager
+	vector < pair<int,int> > Points;
+	string FinalDir;
+	int NumOfSteps = 0;
+	int NumOfDir = 0;
 
-	string path = getPath(xStart,yStart,xEnd, yEnd);
-	for(int i=0; i<(path.length()-1);i++)
+	string Directions = (new PathPlanner())->pathFind(xStart,yStart,xEnd,yEnd,&Points);
+
+	for (int NumOfPnt=Points.size()-1;NumOfPnt>1;NumOfPnt--)
 	{
-		if(!(path[i]==path[i+1]))
+		if (NumOfSteps==3 || Directions[NumOfDir]!=Directions[NumOfDir+1])
 		{
-			//TO DO need to add add particle check
+			pair<int,int> pnt;
+			pnt.first = Points[NumOfPnt].first;
+			pnt.second = Points[NumOfPnt].second;
+			FinalPoints.push_back(pnt);
+			FinalDir[NumOfDir]=Directions[NumOfDir];
+			NumOfDir++;
+			NumOfSteps=0;
 		}
+		NumOfSteps++;
 	}
+	pair<int,int> pnt;
+	pnt.first = xEnd;
+	pnt.second = yEnd;
+	FinalPoints.push_back(pnt);
+	return FinalDir;
 }

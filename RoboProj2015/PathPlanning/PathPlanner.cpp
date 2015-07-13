@@ -6,6 +6,7 @@
  */
 
 #include "PathPlanner.h"
+#include "../environmental/Map.h"
 #include "node.h"
 #include <iostream>
 #include <iomanip>
@@ -17,30 +18,30 @@
 
 using namespace std;
 
-const int n=5; //need to take map size
-const int m=5; //need to take map size
-static int map[n][m]; //need to take map/grid
-static int closed_nodes_map[n][m];
-static int open_nodes_map[n][m];
-static int dir_map[n][m];
 const int dir=8;
 static int dx[dir]={1, 1, 0, -1, -1, -1, 0, 1};
 static int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
 
 PathPlanner::PathPlanner() {
 
-}
+ }
 
 PathPlanner::~PathPlanner() {
 }
 
-bool operator<(const node & a, const node & b)
-{
-	return (a.getPriority() > b.getPriority());
-}
 
-string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd)
+
+string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd, vector < pair<int,int> >* Points)
 {
+	Map* TempMap = new Map();
+	int** TempGrid = TempMap->convertImageToGridWithNewResolution(TempMap->inflateMap());
+	int const n=(TempMap->getWidth());
+	int const m=(TempMap->getHeight());
+	int map[n][m];
+	int closed_nodes_map[n][m];
+	int open_nodes_map[n][m];
+	int dir_map[n][m];
+
 	static priority_queue<node*> pq[2];
 	static int pqi;
 	static node* n0;
@@ -53,7 +54,7 @@ string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd,
 	{
 		for(x=0;x<n;x++)
 		{
-			closed_nodes_map[x][y]=0;
+			closed_nodes_map[x][y]=TempGrid[x][y];
 			open_nodes_map[x][y]=0;
 		}
 	}
@@ -77,14 +78,23 @@ string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd,
 			string path="";
 			while(!(x==xStart && y==yStart))
 			{
+				pair<int,int> pnt;
+				pnt.first = x;
+				pnt.second = y;
+				Points->push_back(pnt);
 				j=dir_map[x][y];
 				c='0'+(j+dir/2)%dir;
 				path=c+path;
 				x+=dx[j];
 				y+=dy[j];
 			}
+			pair<int,int> pnt;
+			pnt.first = x;
+			pnt.second = y;
+			Points->push_back(pnt);
 
 			delete n0;
+
 
 			while(!pq[pqi].empty())
 			{

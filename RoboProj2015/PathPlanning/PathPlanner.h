@@ -21,10 +21,11 @@ using namespace std;
 
 class PathPlanner {
 public:
+
 	PathPlanner();
 	virtual ~PathPlanner();
-	string pathFind(const int xStart, const int yStart, const int xEnd,
-const int yEnd);
+	string pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd, vector < pair<int,int> >* Points);
+
 };
 
 #endif /* PATHPLANNER_H_ */
