@@ -18,12 +18,6 @@
 
 using namespace std;
 
-const int n=6; //need to take from map class
-const int m=6; //need to take from map class
-static int map[n][m]; //need to take map/grid
-static int closed_nodes_map[n][m];
-static int open_nodes_map[n][m];
-static int dir_map[n][m];
 const int dir=8;
 static int dx[dir]={1, 1, 0, -1, -1, -1, 0, 1};
 static int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
@@ -39,6 +33,14 @@ PathPlanner::~PathPlanner() {
 
 string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd, const int yEnd, vector < pair<int,int> >* Points)
 {
+	Map* TempMap = new Map();
+	int** TempGrid = TempMap->convertImageToGridWithNewResolution(TempMap->inflateMap());
+	int const n=(TempMap->getWidth());
+	int const m=(TempMap->getHeight());
+	int map[n][m];
+	int closed_nodes_map[n][m];
+	int open_nodes_map[n][m];
+	int dir_map[n][m];
 
 	static priority_queue<node*> pq[2];
 	static int pqi;
@@ -52,7 +54,7 @@ string PathPlanner::pathFind(const int xStart, const int yStart, const int xEnd,
 	{
 		for(x=0;x<n;x++)
 		{
-			//closed_nodes_map[x][y]=0; - need to take from map class
+			closed_nodes_map[x][y]=TempGrid[x][y];
 			open_nodes_map[x][y]=0;
 		}
 	}
