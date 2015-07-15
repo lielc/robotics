@@ -19,12 +19,13 @@ Manager::Manager(Robot* robot) {
 
 void Manager::run()
 {
-
-	Behavior* currBeh;
-
-	currBeh = getNextBeh(behaviors);
-
-	while(currBeh !=NULL)
+	bool blah = false;
+	while (!blah)
+	{
+		_robot->Read();
+		blah = _robot->GoTo(-8,4,0.8);
+	}
+	/*while(currBeh !=NULL)
 	{
 		_robot->Read();
 
@@ -34,7 +35,7 @@ void Manager::run()
 			_robot->Read();
 		}
 		currBeh = getNextBeh(behaviors);
-	}
+	}*/
 }
 
 Behavior* Manager::getNextBeh(std::vector<Behavior*> behVec) {

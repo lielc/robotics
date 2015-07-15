@@ -11,6 +11,7 @@
 int main()
 {
 	Robot robot("localhost",6665);
+	//Robot robot("10.10.245.64",6665);
 	//PlnObstacleAvoid plnOA(&robot);
 	Manager manager(&robot);
 	manager.run();

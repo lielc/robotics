@@ -31,6 +31,11 @@ int ConfigManager::getStartLocationY()
 	return _startLocation.Y;
 }
 
+int ConfigManager::getStartLocationYaw()
+{
+	return _startLocation.Yaw;
+}
+
 int ConfigManager::getRobotDepth()
 {
 	return _robotSize.depth;

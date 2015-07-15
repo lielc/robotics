@@ -6,6 +6,7 @@
  */
 
 #include "Robot.h"
+#include "ConfigManager.h"
 #include <libplayerc++/playerc++.h>
 
 Robot::Robot(char* ip, int port) {
@@ -13,10 +14,27 @@ Robot::Robot(char* ip, int port) {
 	_pp = new Position2dProxy(_pc);
 	_lp = new LaserProxy(_pc);
 
+	ConfigManager cm;
+	_pp->SetOdometry(cm.getStartLocationX(), cm.getStartLocationY(), cm.getStartLocationYaw());
+
 	_pp->SetMotorEnable(true);
 
 	for(int i=0;i<15;i++)
 		Read();
+}
+
+bool Robot::GoTo(int x, int y, int yaw)
+{
+	_pp->GoTo((double)x,(double)y,(double)yaw);
+	if ((x-1 <_pp->GetXPos()) && (_pp->GetXPos() < x+1) && (y-1 <_pp->GetYPos()) && (_pp->GetYPos() < y+1))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
 
 void Robot::Read() {

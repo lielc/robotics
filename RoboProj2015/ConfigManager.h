@@ -50,6 +50,7 @@ public:
 	string getMapPath();
 	int getStartLocationX();
 	int getStartLocationY();
+	int getStartLocationYaw();
 	int getGoalLocationX();
 	int getGoalLocationY();
 	int getRobotWidth();

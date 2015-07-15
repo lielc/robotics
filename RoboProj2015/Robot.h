@@ -24,6 +24,7 @@ public:
 	bool isRightFree();
 	bool isForwardFree();
 	bool isLeftFree();
+	bool GoTo(int x, int y, int yaw);
 	virtual ~Robot();
 };
 

@@ -17,6 +17,7 @@ int const yStart=(new ConfigManager())->getStartLocationY();
 int const xEnd=(new ConfigManager())->getGoalLocationX();
 int const yEnd=(new ConfigManager())->getGoalLocationY();
 
+
 WaypointManager::WaypointManager() {
 
 }
@@ -24,7 +25,7 @@ WaypointManager::WaypointManager() {
 WaypointManager::~WaypointManager() {
 }
 
-string Path(vector < pair<int,int> > FinalPoints)
+string WaypointManager::Path()
 {
 	vector < pair<int,int> > Points;
 	string FinalDir;
@@ -40,6 +41,7 @@ string Path(vector < pair<int,int> > FinalPoints)
 			pair<int,int> pnt;
 			pnt.first = Points[NumOfPnt].first;
 			pnt.second = Points[NumOfPnt].second;
+
 			FinalPoints.push_back(pnt);
 			FinalDir[NumOfDir]=Directions[NumOfDir];
 			NumOfDir++;

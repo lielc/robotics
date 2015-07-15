@@ -16,7 +16,8 @@ class WaypointManager {
 public:
 	WaypointManager();
 	virtual ~WaypointManager();
-	string Path(vector < pair<int,int> > FinalPoints);
+	string Path();
+	vector < pair<int,int> > FinalPoints;
 };
 
 #endif /* WAYPOINTMANAGER_H_ */
