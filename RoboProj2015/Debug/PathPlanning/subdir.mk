@@ -5,18 +5,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../PathPlanning/PathPlanner.cpp \
-../PathPlanning/WaypointManager.cpp \
-../PathPlanning/node.cpp 
+../PathPlanning/Plan.cpp \
+../PathPlanning/WaypointManager.cpp 
 
 OBJS += \
 ./PathPlanning/PathPlanner.o \
-./PathPlanning/WaypointManager.o \
-./PathPlanning/node.o 
+./PathPlanning/Plan.o \
+./PathPlanning/WaypointManager.o 
 
 CPP_DEPS += \
 ./PathPlanning/PathPlanner.d \
-./PathPlanning/WaypointManager.d \
-./PathPlanning/node.d 
+./PathPlanning/Plan.d \
+./PathPlanning/WaypointManager.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

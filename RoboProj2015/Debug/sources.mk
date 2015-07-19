@@ -26,5 +26,6 @@ SUBDIRS := \
 . \
 environmental \
 behaviors \
+Utils \
 PathPlanning \
 

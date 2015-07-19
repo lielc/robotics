@@ -11,7 +11,11 @@ main.d: ../main.cpp ../Robot.h \
  /usr/local/include/player-2.0/libplayerc++/playerc++config.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
- /usr/local/include/player-2.0/libplayerc++/clientproxy.h ../Manager.h
+ /usr/local/include/player-2.0/libplayerc++/clientproxy.h ../Manager.h \
+ .././Robot.h .././PathPlanning/Plan.h .././behaviors/Behavior.h \
+ .././behaviors/../Robot.h .././behaviors/GoForward.h \
+ .././behaviors/./Behavior.h .././behaviors/TurnUntilFree.h \
+ .././behaviors/TurnLeft.h .././behaviors/TurnRight.h
 
 ../Robot.h:
 
@@ -42,3 +46,21 @@ main.d: ../main.cpp ../Robot.h \
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
 ../Manager.h:
+
+.././Robot.h:
+
+.././PathPlanning/Plan.h:
+
+.././behaviors/Behavior.h:
+
+.././behaviors/../Robot.h:
+
+.././behaviors/GoForward.h:
+
+.././behaviors/./Behavior.h:
+
+.././behaviors/TurnUntilFree.h:
+
+.././behaviors/TurnLeft.h:
+
+.././behaviors/TurnRight.h:
