@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 using namespace std;
-const string CONFIGURATION_FILE_PATH = "./parameters.txt";
+const string CONFIGURATION_FILE_PATH = "./Files/parameters.txt";
 const string MAP_SECTION = "map:";
 const string START_LOCATION_SECTION = "startLocation:";
 const string GOAL_SECTION = "goal:";
