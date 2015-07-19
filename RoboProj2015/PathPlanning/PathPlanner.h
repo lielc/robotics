@@ -8,7 +8,6 @@
 #ifndef PATHPLANNER_H_
 #define PATHPLANNER_H_
 
-#include "node.h"
 #include <iostream>
 #include <iomanip>
 #include <queue>

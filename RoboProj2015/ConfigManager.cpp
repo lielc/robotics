@@ -8,7 +8,7 @@
 #include "ConfigManager.h"
 
 ConfigManager::ConfigManager() {
-	//initializeConfParameters();
+	initializeConfParameters();
 }
 
 int ConfigManager::getGoalLocationX()
@@ -145,7 +145,7 @@ void ConfigManager::initializeConfParameters()
 		{
 			this->_mapResolutionCM = atof(currLine.substr(sectionName.length() + 1).c_str());
 		}
-		else
+		else if (sectionName == GRID_RESOLUTION_SECTION)
 		{
 			this->_gridResolutionCM = atoi(currLine.substr(sectionName.length() + 1).c_str());
 		}

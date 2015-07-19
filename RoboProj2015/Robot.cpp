@@ -8,14 +8,12 @@
 #include "Robot.h"
 #include "ConfigManager.h"
 #include <libplayerc++/playerc++.h>
+#include <unistd.h>
 
 Robot::Robot(char* ip, int port) {
 	_pc = new PlayerClient(ip,port);
 	_pp = new Position2dProxy(_pc);
 	_lp = new LaserProxy(_pc);
-
-	ConfigManager cm;
-	_pp->SetOdometry(cm.getStartLocationX(), cm.getStartLocationY(), cm.getStartLocationYaw());
 
 	_pp->SetMotorEnable(true);
 
@@ -23,18 +21,16 @@ Robot::Robot(char* ip, int port) {
 		Read();
 }
 
-bool Robot::GoTo(int x, int y, int yaw)
+void Robot::GoTo(double x, double y, double yaw, int Time)
 {
-	_pp->GoTo((double)x,(double)y,(double)yaw);
-	if ((x-1 <_pp->GetXPos()) && (_pp->GetXPos() < x+1) && (y-1 <_pp->GetYPos()) && (_pp->GetYPos() < y+1))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	_pp->GoTo(x,y,yaw);
+	sleep(Time);
+	_pp->SetOdometry(x,y,yaw);
 
+}
+double Robot::GetSpeed()
+{
+	return SPEED;
 }
 
 void Robot::Read() {

@@ -20,6 +20,7 @@ Map::Map()
 	_gridResolution = confManager.getGridResolution();
 	_robotWidth = confManager.getRobotWidth();
 	_robotDepth = confManager.getRobotDepth();
+	loadImage("roboticLabMap.png");
 }
 
 Map::~Map(void)
@@ -208,7 +209,7 @@ vector <unsigned char> Map::inflateMap()
 		}
 	}
 
-	//saveImage("C:\\Users\\yanovskyde\\Downloads\\inflated.png", inflatedMap);
+	//saveImage("../inflated.png", inflatedMap);
 	//encodeOneStep("inflatedImage.png", inflatedImage, _height, _height);
 
 	return inflatedMap;

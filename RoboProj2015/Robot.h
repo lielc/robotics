@@ -15,7 +15,9 @@ class Robot {
 	PlayerClient*_pc;
 	Position2dProxy* _pp;
 	LaserProxy* _lp;
+	PlannerProxy* _plp;
 	static const double FREE_DIST = 1.0;
+	static const double SPEED = 0.8;
 
 public:
 	Robot(char* ip, int port);
@@ -24,7 +26,8 @@ public:
 	bool isRightFree();
 	bool isForwardFree();
 	bool isLeftFree();
-	bool GoTo(int x, int y, int yaw);
+	void GoTo(double x, double y, double yaw, int Time);
+	double GetSpeed();
 	virtual ~Robot();
 };
 
