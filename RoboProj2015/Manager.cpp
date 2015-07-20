@@ -18,8 +18,6 @@ using namespace std;
 
 Manager::Manager(Robot* robot) {
 	_robot = robot;
-	/*behaviors.push_back(new GoForward(_robot));
-	behaviors.push_back(new TurnUntilFree(_robot));*/
 }
 
 void Manager::run()

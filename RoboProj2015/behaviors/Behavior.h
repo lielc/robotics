@@ -25,8 +25,6 @@ public:
 	virtual bool startCondition() = 0;
 	virtual bool stopCondition() = 0;
 	virtual void action() = 0;
-	//void addBeh(Behavior* behavior, std::vector<Behavior*> behVec);
-	//Behavior* getNextBeh(std::vector<Behavior*> behVec);
 };
 
 #endif /* BEHAVIOR_H_ */
